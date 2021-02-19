@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.java.group.enter.mapper.GroupEnterBoardMapper">
+	<resultMap type="com.java.group.enter.dto.GroupEnterBoardDto" id="GroupEnterBoardDto">
+		<result column="board_number" property="board_number"/>
+		<result column="writer" property="writer"/>
+		<result column="subject" property="subject"/>
+		<result column="contents" property="contents"/>
+		<result column="board_password" property="board_password"/>
+		<result column="write_date" property="write_date"/>
+		<result column="end_date" property="end_date"/>
+		<result column="id" property="id"/>
+		<result column="price" property="price"/>
+		<result column="peopleCount" property="peopleCount"/>
+		<result column="kakaoID" property="kakaoID"/>
+		<result column="picture_load" property="picture_load"/>
+		
+		<result column="read_count" property="read_count"/>
+		<result column="group_number" property="group_number"/>
+		<result column="sequence_number" property="sequence_number"/>
+		<result column="sequence_level" property="sequence_level"/>
+		
+	</resultMap>
+	
+	<select id="groupboardList" parameterType="java.util.HashMap" resultType="com.java.group.enter.dto.GroupEnterBoardDto">
+		<![CDATA[
+			SELECT * FROM
+				(SELECT rownum as rnum, a.* FROM
+					(SELECT * FROM board 
+						ORDER BY group_number DESC, sequence_number ASC) a)b 
+			WHERE b.rnum >= #{startRow} AND b.rnum <= #{endRow}
+		]]>
+	</select>
+	<insert id="groupEnterboardInsert" parameterType="com.java.group.enter.dto.GroupEnterBoardDto">
+		insert into board (
+			board_number, writer, subject, contents, board_password, 
+			write_date, end_date, id, price, peoplecount, kakaoID, picture_load, read_count, group_number, sequence_number, sequence_level) 
+		values(board_board_number_seq.nextval, 
+			#{writer},#{subject},#{contents},#{board_password}, 
+			sysdate, #{end_date, jdbcType=DATE}, #{id}, #{price}, #{peoplecount}, #{kakaoID}, #{picture_load, jdbcType=VARCHAR}, 
+			#{read_count},#{group_number},#{sequence_number},#{sequence_level})
+	</insert>
+</mapper>
