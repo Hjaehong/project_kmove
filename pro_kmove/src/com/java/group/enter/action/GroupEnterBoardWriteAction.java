@@ -15,14 +15,13 @@ public class GroupEnterBoardWriteAction implements Command {
 		int sequence_number = 0;
 		int sequence_level = 0;
 		int pageNumber = 1;
-		
-		
+
 		request.setAttribute("board_number", board_number);
 		request.setAttribute("group_number", group_number);
 		request.setAttribute("sequence_number", sequence_number);
 		request.setAttribute("sequence_level", sequence_level);
 		request.setAttribute("pageNumber", pageNumber);
-		// list.jsp에서 아이디 보낸거 받고 write.jsp로 보내기
+		
 		
 		return "/WEB-INF/views/groupPurchase/write.jsp";
 	}

@@ -24,10 +24,11 @@
 				<jsp:include page="${viewPage}"/>
 			</c:if>
 		</div>
-		<div id="sideMenu">
-			<jsp:include page="/template/sideMenu.jsp"/>
+		<div id="loginMenu">
+			<jsp:include page="/template/loginMenu.jsp"/>
 		</div>
 	</div>
+	
 	
 </body>
 </html>

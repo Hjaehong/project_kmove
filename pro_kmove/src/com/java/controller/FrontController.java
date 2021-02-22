@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.java.command.Command;
 
-@WebServlet(urlPatterns="*.stu", initParams = @WebInitParam(name="configFile",value="/WEB-INF/URICommand.properties"))
+@WebServlet(urlPatterns="*.do", initParams = @WebInitParam(name="configFile",value="/WEB-INF/URICommand.properties"))
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private HashMap<String, Object> commandMap = new HashMap<String, Object>();  
@@ -89,10 +89,9 @@ public class FrontController extends HttpServlet {
 		
 		if(viewPage!=null) {
 			RequestDispatcher rd = request.getRequestDispatcher(viewPage);
-			rd.forward(request, response);
 			request.setAttribute("viewPage", viewPage);
+			rd.forward(request, response);
 		}
-		
 //		RequestDispatcher rd = null;
 //		if(viewPage!=null) {
 //			if(viewPage.equals("/WEB-INF/views/member/idCheck.jsp")||viewPage.equals("/WEB-INF/views/member/zipcode.jsp")) {
@@ -102,7 +101,7 @@ public class FrontController extends HttpServlet {
 //				rd = request.getRequestDispatcher("/template/mainPage.jsp");
 //			}
 //		}
-		
+//		
 //		rd.forward(request, response);
 	}
 

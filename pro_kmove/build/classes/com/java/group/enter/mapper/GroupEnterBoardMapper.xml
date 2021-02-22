@@ -14,7 +14,7 @@
 		<result column="end_date" property="end_date"/>
 		<result column="id" property="id"/>
 		<result column="price" property="price"/>
-		<result column="peopleCount" property="peopleCount"/>
+		<result column="peoplecount" property="peoplecount"/>
 		<result column="kakaoID" property="kakaoID"/>
 		<result column="picture_load" property="picture_load"/>
 		
@@ -34,13 +34,28 @@
 			WHERE b.rnum >= #{startRow} AND b.rnum <= #{endRow}
 		]]>
 	</select>
-	<insert id="groupEnterboardInsert" parameterType="com.java.group.enter.dto.GroupEnterBoardDto">
+	
+	<insert id="boardInsert" parameterType="com.java.group.enter.dto.GroupEnterBoardDto">
 		insert into board (
 			board_number, writer, subject, contents, board_password, 
 			write_date, end_date, id, price, peoplecount, kakaoID, picture_load, read_count, group_number, sequence_number, sequence_level) 
 		values(board_board_number_seq.nextval, 
-			#{writer},#{subject},#{contents},#{board_password}, 
-			sysdate, #{end_date, jdbcType=DATE}, #{id}, #{price}, #{peoplecount}, #{kakaoID}, #{picture_load, jdbcType=VARCHAR}, 
+			#{writer},#{subject}, #{contents}, #{board_password}, 
+			sysdate, #{end_date, jdbcType=VARCHAR}, #{id, jdbcType=VARCHAR}, #{price}, #{peoplecount}, #{kakaoID}, #{picture_load, jdbcType=VARCHAR},
 			#{read_count},#{group_number},#{sequence_number},#{sequence_level})
 	</insert>
+	
+	
+	<select id="groupboardCount" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<update id="boardReadCount" parameterType="int">
+		update board set read_count = read_count+1 where board_number = #{board_number}
+	</update>
+	
+	<select id="groupBoardRead" parameterType="int" resultType="com.java.group.enter.dto.GroupEnterBoardDto">
+		select * from board where board_number = #{board_number}
+	</select>
+	
 </mapper>

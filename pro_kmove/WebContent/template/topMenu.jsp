@@ -10,13 +10,13 @@
 </head>
 <body>
 	<div align="center">
-		<a href="${root}/groupPurchase/list.stu">공동구매</a>
+		<a href="${root}/groupPurchase/list.do">공동구매</a>
 		|
-		<a href="${root}/forCountry/forCountry.stu">해외직구</a>
+		<a href="${root}/forCountry/forCountry.do">해외직구</a>
 		|
-		<a href="${root}/customOrder/customOrder.stu">주문제작</a>
+		<a href="${root}/customOrder/customOrder.do">주문제작</a>
 		|
-		<a href="${root}/board/board.stu">자유게시판</a>
+		<a href="${root}/board/board.do">자유게시판</a>
 	</div>
 </body>
 </html>

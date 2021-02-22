@@ -5,16 +5,16 @@ import java.util.Date;
 public class GroupEnterBoardDto {
 	
 	private int board_number;		
-	//private String writer; 			
+	private String writer; 			
 	private String subject;			
 	private String contents;			
 	private String board_password;
 
 	private Date write_date;		
 	private Date end_date;
-	//private String id;
+	private String id;
 	private int price;
-	private int peopleCount;
+	private int peoplecount;
 	
 	private String kakaoID;
 	private String picture_load;	
@@ -34,12 +34,12 @@ public class GroupEnterBoardDto {
 	public void setBoard_number(int board_number) {
 		this.board_number = board_number;
 	}
-//	public String getWriter() {
-//		return writer;
-//	}
-//	public void setWriter(String writer) {
-//		this.writer = writer;
-//	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public String getSubject() {
 		return subject;
 	}
@@ -113,23 +113,23 @@ public class GroupEnterBoardDto {
 		this.end_date = end_date;
 	}
 	
-//	public String getId() {
-//		return id;
-//	}
-//	public void setId(String id) {
-//		this.id = id;
-//	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getPeopleCount() {
-		return peopleCount;
+	public int getPeoplecount() {
+		return peoplecount;
 	}
-	public void setPeopleCount(int peopleCount) {
-		this.peopleCount = peopleCount;
+	public void setPeoplecount(int peoplecount) {
+		this.peoplecount = peoplecount;
 	}
 	public String getKakaoID() {
 		return kakaoID;
@@ -143,5 +143,14 @@ public class GroupEnterBoardDto {
 	public void setPicture_load(String picture_load) {
 		this.picture_load = picture_load;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "GroupEnterBoardDto [board_number=" + board_number + ", writer=" + writer + ", subject=" + subject
+				+ ", contents=" + contents + ", board_password=" + board_password + ", write_date=" + write_date
+				+ ", end_date=" + end_date + ", id=" + id + ", price=" + price + ", peoplecount=" + peoplecount
+				+ ", kakaoID=" + kakaoID + ", picture_load=" + picture_load + ", read_count=" + read_count
+				+ ", group_number=" + group_number + ", sequence_number=" + sequence_number + ", sequence_level="
+				+ sequence_level + "]";
+	}
 }
