@@ -14,7 +14,7 @@ public class MemberUpdateOkAction implements Command {
 		request.setCharacterEncoding("utf-8");
 		
 		MemberDto memberDto=new MemberDto();
-		memberDto.setMember_number(request.getParameter("memberNumber"));
+		memberDto.setMember_number(Integer.parseInt(request.getParameter("memberNumber")));
 		memberDto.setId(request.getParameter("id"));
 		memberDto.setPassword(request.getParameter("password"));
 		memberDto.setName(request.getParameter("name"));

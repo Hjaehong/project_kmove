@@ -20,11 +20,13 @@
 		<result column="ban" property="ban"/>
 		<result column="grade" property="grade"/>
 		<result column="profile" property="profile"/>
+		<result column="board_number" property="board_number"/>
+		
 	</resultMap>
 	
 	<insert id="memberInsert" parameterType="com.java.member.dto.MemberDto">
-		insert into member (member_number, id, password, name, nickname, zipcode, address, phone1, phone2, phone3, ban, grade, profile) 
-		values(member_member_number_seq.nextval, 
+		insert into member (member_number, id, password, name, nickname, zipcode, address, phone1, phone2, phone3, ban, grade, profile, board_number) 
+		values(member_number_seq.nextval, 
 		#{id}, 
 		#{password},
 		#{name},  
@@ -36,7 +38,8 @@
 		#{phone3}, 
 		0,
 		0,
-		0)
+		0,
+		#{board_number, jdbcType=NUMERIC})
 	</insert>
 	
 	<select id="memberIdCheck" parameterType="String" resultType="String">
@@ -66,6 +69,15 @@
 		interest= #{interest} 
 		where num= #{num}
 	</update>
+	<!-- 
+	<insert id="check_id" parameterType="java.util.HashMap">
+		insert into member(board_number) select board_number from member where id=#{id})
+	</insert>
+	
+	<select id="isMine" parameterType="java.util.HashMap" resultType="String">
+		select 1 from member where id=#{id} and board_number=#{board_number}
+	</select>
+	 -->
 </mapper>
 
 

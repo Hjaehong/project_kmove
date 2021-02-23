@@ -22,6 +22,7 @@ public class GroupEnterBoardDto {
 	private int group_number;		
 	private int sequence_number;	
 	private int sequence_level;		
+	private int member_number;
 	
 	
 //	private String fileName;
@@ -144,6 +145,13 @@ public class GroupEnterBoardDto {
 		this.picture_load = picture_load;
 	}
 	
+	public int getMember_number() {
+		return member_number;
+	}
+	public void setMember_number(int member_number) {
+		this.member_number = member_number;
+	}
+	
 	@Override
 	public String toString() {
 		return "GroupEnterBoardDto [board_number=" + board_number + ", writer=" + writer + ", subject=" + subject
@@ -151,6 +159,6 @@ public class GroupEnterBoardDto {
 				+ ", end_date=" + end_date + ", id=" + id + ", price=" + price + ", peoplecount=" + peoplecount
 				+ ", kakaoID=" + kakaoID + ", picture_load=" + picture_load + ", read_count=" + read_count
 				+ ", group_number=" + group_number + ", sequence_number=" + sequence_number + ", sequence_level="
-				+ sequence_level + "]";
+				+ sequence_level + ", member_number=" + member_number + "]";
 	}
 }

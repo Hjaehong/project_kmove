@@ -2,10 +2,13 @@ package com.java.group.enter.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.java.command.Command;
 import com.java.group.enter.dao.GroupEnterBoardDao;
 import com.java.group.enter.dto.GroupEnterBoardDto;
+import com.java.member.dao.MemberDao;
+import com.java.member.dto.MemberDto;
 
 public class GroupEnterBoardWriteOkAction implements Command {
 
@@ -27,6 +30,11 @@ public class GroupEnterBoardWriteOkAction implements Command {
 		groupEnterboardDto.setKakaoID(request.getParameter("kakaoID"));
 		groupEnterboardDto.setContents(request.getParameter("contents"));
 		
+		HttpSession session=request.getSession();
+		String id = (String) session.getAttribute("id");
+		groupEnterboardDto.setId(id);
+		
+		int board_number = Integer.parseInt(request.getParameter("board_number"));
 		
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		

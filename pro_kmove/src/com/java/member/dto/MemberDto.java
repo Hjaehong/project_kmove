@@ -1,7 +1,7 @@
 package com.java.member.dto;
 
 public class MemberDto {
-	private String member_number;
+	private int member_number;
 	private String id;
 	private String password;
 	private String name;
@@ -15,12 +15,21 @@ public class MemberDto {
 	private String address;
 	
 	private int ban;
+	private int board_number;
+	
+	public int getBoard_number() {
+		return board_number;
+	}
 
-	public String getMember_number() {
+	public void setBoard_number(int board_number) {
+		this.board_number = board_number;
+	}
+
+	public int getMember_number() {
 		return member_number;
 	}
 
-	public void setMember_number(String member_number) {
+	public void setMember_number(int member_number) {
 		this.member_number = member_number;
 	}
 
@@ -116,6 +125,7 @@ public class MemberDto {
 	public String toString() {
 		return "MemberDto [member_number=" + member_number + ", id=" + id + ", password=" + password + ", name=" + name
 				+ ", nickname=" + nickname + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3=" + phone3
-				+ ", grade=" + grade + ", zipcode=" + zipcode + ", address=" + address + ", ban=" + ban + "]";
+				+ ", grade=" + grade + ", zipcode=" + zipcode + ", address=" + address + ", ban=" + ban
+				+ ", board_number=" + board_number + "]";
 	}
 }

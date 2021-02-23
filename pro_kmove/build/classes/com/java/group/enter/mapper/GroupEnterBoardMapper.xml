@@ -22,6 +22,8 @@
 		<result column="group_number" property="group_number"/>
 		<result column="sequence_number" property="sequence_number"/>
 		<result column="sequence_level" property="sequence_level"/>
+		<result column="member_number" property="member_number"/>
+		
 		
 	</resultMap>
 	
@@ -56,6 +58,15 @@
 	
 	<select id="groupBoardRead" parameterType="int" resultType="com.java.group.enter.dto.GroupEnterBoardDto">
 		select * from board where board_number = #{board_number}
+	</select>
+	
+	<select id="isMine" parameterType="java.util.HashMap" resultType="String">
+			SELECT board_number FROM board
+			WHERE EXISTS
+			(
+    			SELECT board_number FROM member
+   				WHERE board.id = #{id} and board.board_number = #{board_number}
+			)
 	</select>
 	
 </mapper>

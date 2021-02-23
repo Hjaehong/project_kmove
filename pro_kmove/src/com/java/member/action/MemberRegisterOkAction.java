@@ -23,6 +23,8 @@ public class MemberRegisterOkAction implements Command {
 		memberDto.setPhone3(request.getParameter("phone3"));
 		memberDto.setZipcode(request.getParameter("sample4_postcode"));
 		memberDto.setAddress(request.getParameter("mainAddress"));
+		memberDto.setMember_number(Integer.parseInt(request.getParameter("member_number")));
+		
 		logger.info(logMsg +memberDto.toString());
 		
 		int check=MemberDao.getInstance().insert(memberDto);

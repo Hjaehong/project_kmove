@@ -120,6 +120,43 @@ public class MemberDao {
 		return check;
 	}
 	
-	
+//	public int check_id(int board_number, String id) {
+//		int check =0;
+//		HashMap<Object, Object> map = new HashMap<Object, Object>();
+//		map.put("board_number", board_number);
+//		map.put("id", id);
+//		
+//		try {
+//			session = sqlSessionFactory.openSession();
+//			check = session.insert("check_id", map);
+//			session.commit();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			session.close();
+//		}
+//		
+//		return check;
+//	}
+//	
+//	public int isMine(String id, int board_number) {
+//		int check =0;
+//		HashMap<Object, Object> map = new HashMap<Object, Object>();
+//		map.put("id", id);
+//		map.put("board_number", board_number);
+//		try {
+//			session = sqlSessionFactory.openSession();
+//			String aa = session.selectOne("isMine", map);
+//			System.out.println("1반환왜안해 "+aa);
+//			check = Integer.parseInt(aa);
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}finally {
+//			session.close();
+//		}
+//		
+//		return check;
+//	}
 }
 

@@ -92,6 +92,26 @@ public class GroupEnterBoardDao {
 		return groupEnterBoardDto;
 		
 	}
+	public int isMine(int board_number, String id) {
+		HashMap<Object, Object> hMap = new HashMap<Object, Object>();
+		hMap.put("board_number", board_number);
+		hMap.put("id", id);
+		
+		int check=0;
+		List<String> list = null;
+		
+		try {
+			session = sqlSessionFactory.openSession();
+			list = session.selectList("isMine", hMap);
+			check = list.size();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return check;
+	}
 }
 
 

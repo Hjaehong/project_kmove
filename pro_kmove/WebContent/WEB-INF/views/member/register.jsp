@@ -77,6 +77,7 @@
 		<form class="form_style" name="memberForm" action="${root}/member/registerOk.do" 
 		          method="post" onsubmit="return registerForm(this)">
 		                                          <%-- 기본값 : 참(true) --%>
+		          <input type="hidden" name="member_number" value="${member_number}"/>
 			<div class="line">
 				<label class="title">아이디</label>
 				<span class="content">
