@@ -12,13 +12,13 @@
 	<c:if test="${check > 0}">
 		<script type="text/javascript">
 			alert("글쓰기 성공")
-			location.href="${root}/groupPurchase/list.stu?pageNumber=${pageNumber}";
+			location.href="${root}/groupPurchase/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
 	<c:if test="${check == 0}">
 		<script type="text/javascript">
 			alert("글쓰기 실패")
-			location.href="${root}/groupPurchase/list.stu?pageNumber=${pageNumber}";
+			location.href="${root}/groupPurchase/list.do?pageNumber=${pageNumber}";
 		</script>
 	</c:if>
 </body>

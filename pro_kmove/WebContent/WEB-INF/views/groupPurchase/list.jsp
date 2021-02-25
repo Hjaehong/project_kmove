@@ -13,23 +13,25 @@
 </head>
 <body>
 <!-- 글쓰기 할때 아이디 보내야함 -->
-	<!--  <table width="530" align="center">-->
+<div id="topMenu">
+		<jsp:include page="/template/topMenu.jsp"/>
+</div>
+<table width="530" align="center">
 	<div>
 		<tr>
 			<td align="right" bgcolor="D1DBDB">
-				<a href="${root}/groupPurchase/write.stu">글쓰기</a>
+				<a href="${root}/groupPurchase/write.do">글쓰기</a>
 			</td>
 		</tr>
 	</div>
-	<!-- </table> -->
-	
-	
-	<!-- <table border="1" width="530" cellpadding="2" cellspacing="0" align="center"> -->
-		<tr>
-			<td align="center">게시판에 저장된 글이 없습니다.</td>
-		</tr>
-	<!-- </table> -->
-	
+</table>
+<c:if test="${count==0}">
+	<table border="1" width="530" cellpadding="2" cellspacing="0" align="center">
+			<tr>
+				<td align="center">게시판에 저장된 글이 없습니다.</td>
+			</tr>
+	</table>
+</c:if>
 
 	<c:if test="${count > 0}">
 		<table border="1" width="530" cellpadding="2" cellspacing="0" align="center">
@@ -51,11 +53,11 @@
 								&nbsp;
 							</c:forEach>					
 						</c:if>
-						<a href="${root}/groupPurchase/read.stu?board_number=${groupboardDto.board_number}&pageNumber=${currentPage}">
+						<a href="${root}/groupPurchase/read.do?board_number=${groupboardDto.board_number}&pageNumber=${currentPage}">
 							${groupboardDto.subject}
 						</a>
 					</td>					
-					<td>${groupboardDto.writer}</td>
+					<td>${groupboardDto.subject}</td>
 					<td>
 						<fmt:formatDate value="${groupboardDto.write_date}" pattern="yyyy-MM-dd"/>
 					</td>
@@ -63,7 +65,7 @@
 				</tr>
 			</c:forEach>	
 		</table>
-	</c:if>	
+	</c:if>
 		<br/>
 	
 	<!-- 페이지 번호 -->
@@ -97,18 +99,18 @@
 		<br/>
 		<%-- 이전 --%>
 		<c:if test="${startPage > pageBlock}">
-			<a href="${root}/groupPurchase/list.stu?pageNumber=${startPage-pageBlock}">[이전]</a>
+			<a href="${root}/groupPurchase/list.do?pageNumber=${startPage-pageBlock}">[이전]</a>
 		</c:if>
 		
 		<%-- 페이지 번호 반복 처리 --%>
 		<c:forEach var="i" begin="${startPage}" end="${endPage}">
-			<a href="${root}/groupPurchase/list.stu?pageNumber=${i}">[${i}]</a>
+			<a href="${root}/groupPurchase/list.do?pageNumber=${i}">[${i}]</a>
 		</c:forEach>
 		
 		
 		<%-- 다음 --%>
 		<c:if test="${endPage < pageCount}">
-			<a href="${root}/groupPurchase/list.stu?pageNumber=${startPage+pageBlock}">[다음]</a>
+			<a href="${root}/groupPurchase/list.do?pageNumber=${startPage+pageBlock}">[다음]</a>
 		</c:if>
 	</center>
 </body>

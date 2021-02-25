@@ -9,7 +9,6 @@
       <dataSource type="UNPOOLED">
         <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
         <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-        <!-- <property name="username" value="hr"/>-->
         <property name="username" value="c##09"/>
         <property name="password" value="0909"/> 
       </dataSource>
@@ -18,6 +17,7 @@
   
   <mappers>
     <mapper resource="com/java/group/enter/mapper/GroupEnterBoardMapper.xml"/>
-    
+    <mapper resource="com/java/member/mapper/MemberMapper.xml"/>
+    <mapper resource="com/java/json/mapper/enterReqMapper.xml"/>
   </mappers>
 </configuration>

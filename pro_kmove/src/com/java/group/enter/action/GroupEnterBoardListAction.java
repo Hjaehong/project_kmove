@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.java.command.Command;
 import com.java.group.enter.dao.GroupEnterBoardDao;
 import com.java.group.enter.dto.GroupEnterBoardDto;
+import com.java.json.action.JsonID;
+import com.java.json.dao.EnterID;
 
 public class GroupEnterBoardListAction implements Command {
 
@@ -24,13 +26,21 @@ public class GroupEnterBoardListAction implements Command {
 		int startRow = (currentPage-1)*boardSize+1; 
 		int endRow = (currentPage*boardSize);
 		
+		int count = GroupEnterBoardDao.getInstance().getCount();
+		logger.info(logMsg + "count" + count);
 		
 		List<GroupEnterBoardDto> groupboardList = null;
-		groupboardList = GroupEnterBoardDao.getInstance().getBoardList(startRow, endRow);
 		
-		request.setAttribute("boardSize", boardSize);		// ���������� �Խù� ��
-		request.setAttribute("currentPage", currentPage);	// ��û ������
-		request.setAttribute("boardList", groupboardList);		// �������� �Խù�
+		if(count > 0) {
+			groupboardList = GroupEnterBoardDao.getInstance().getBoardList(startRow, endRow);
+			logger.info(logMsg + "listSize: " + groupboardList.size());
+		}
+		
+		
+		request.setAttribute("boardSize", boardSize);		
+		request.setAttribute("currentPage", currentPage);	
+		request.setAttribute("groupboardList", groupboardList);		
+		request.setAttribute("count", count);
 		
 		return "/WEB-INF/views/groupPurchase/list.jsp";
 	}

@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 글쓰기</title>
 <link rel="stylesheet" type="text/css" href="${root}/css/main.css"/>
-<script type="text/javascript" src="${root}/javascipt/groupPurchase/script.js"></script>
+<link rel="stylesheet" type="text/css" href="${root}/css/groupPurchase/style.css"/>
 </head>
 <body>
 	<b>
@@ -17,44 +17,55 @@
 		sequence_number : ${sequence_number}
 		sequence_level : ${sequence_level}
 	</b>
-	<form class="form_style"  action="${root}/groupPurchase/writeOk.stu" method="post" onsubmit="return boardForm(this)" enctype="multipart/form-data">	
-		
+	<form class="form_style"  action="${root}/groupPurchase/writeOk.do" method="post" onsubmit="return boardForm(this)">	
 		<input type="hidden" name="board_number" value="${board_number}"/>
 		<input type="hidden" name="group_number" value="${group_number}"/>
 		<input type="hidden" name="sequence_number" value="${sequence_number}"/>
 		<input type="hidden" name="sequence_level" value="${sequence_level}"/>
 		<input type="hidden" name="pageNumber" value="${pageNumber}"/>
-
+		
 		<div style="width:598px; height:15px; border-width:2px; text-align:right; padding:15px 0px 0px 0px; border-bottom-width:0px;">
-			<a href="${root}/groupPurchase/list.stu?pageNumber=${pageNumber}">글목록</a>
+			<a href="${root}/groupPurchase/list.do?pageNumber=${pageNumber}">글목록</a>
 		</div>
-			
+		
 		<div class="line">
 			<label class="title">비밀번호</label>
 			<span class="content">
 				<input type="password" name="board_password"/>
 			</span>
 		</div>
-		
 		<div class="line">
-			<label>마감날짜</label>
-			<span class="content"><input type="date" size="50" name="end_date"/></span>
+			<label class="title">닉네임</label>
+			<span class="content">
+				<input type="text" name="writer" value="11"/>
+			</span>
 		</div>
 		<div class="line">
-			<label>인원수</label>
-			<span class="content"><input type="text" size="50" name="peopleCount"/></span>
+			<label class="title">마감날짜</label>
+			<span class="content">
+				<input type="date" size="50" name="end_date"/>
+			</span>
 		</div>
-		<div class="line">
-			<label>가격</label>
-			<span class="content"><input type="text" size="50" name="price"/></span>
-		</div>
-		<div class="line">
-			<label>카카오아이디</label>
-			<span class="content"><input type="text" size="50" name="kakaoID"/></span>
-		</div>
+
+		<label class="title">인원수</label>
+		<span class="peoplecount">
+			<input type="text" size="30" name="peoplecount"/>
+		</span>
+		<label class="title">가격</label>
+		<span class="peoplecount">
+			<input type="text" size="30" name="price"/>
+		</span>
+
 		<div class="line">
 			<label class="title">제목</label>
 			<span class="content"><input type="text" size="50" name="subject"/></span>
+		</div>
+
+		<div class="line">
+			<label class="title">카카오아이디</label>
+			<span class="content">
+				<input type="text" name="kakaoID"/>
+			</span>
 		</div>
 		
 		<div class="line" style="height:230px;">
@@ -63,22 +74,13 @@
 				<textarea rows="14" cols="58" name="contents"></textarea>
 			</span>
 		</div>
-		<div class="line">
-			<label class="title">사진</label>
-			<span class="content"><input type="text" size="50" name="picture_load"/></span>
-		</div>
-	<!-- 	
-		<div class="line">
-			<label class="title">파일명</label>
-			<span class="content">
-				<input type="file" name="file" size="40"/>
-			</span>
-		</div>
-	 -->
+		
+		
+		
 		<div class="line" style="width:598px; border-width:2px; text-align:center;">
 			<input type="submit" value="글쓰기"/>
 			<input type="reset" value="다시작성"/>
-			<input type="button" value="목록보기" onclick="location.href='${root}/groupPurchase/list.stu?pageNumber=${pageNumber}'"/>
+			<input type="button" value="목록보기" onclick="location.href='${root}/groupPurchase/list.do?pageNumber=${pageNumber}'"/>
 		</div>
 	</form>
 </body>

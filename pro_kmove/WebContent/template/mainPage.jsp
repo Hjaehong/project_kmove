@@ -23,9 +23,6 @@
 				<jsp:include page="${viewPage}"></jsp:include>
 			</c:if>
 		</div>
-		<div id="sideMenu">
-			<jsp:include page="sideMenu.jsp"/>
-		</div>
 	</div>	
 </body>
 </html>

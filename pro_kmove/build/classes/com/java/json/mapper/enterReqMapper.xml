@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.java.json.mapper.enterReqMapper">
+	<resultMap type="com.java.json.action.JsonID" id="JsonID">
+		<result column="id" property="id"/>
+	</resultMap>
+	
+	<insert id="enterReq" parameterType="java.util.HashMap">
+		insert into enterreq(id, board_number) values(#{id}, #{board_number}) 
+	</insert>
+	
+	<select id="enterlist" resultType="com.java.json.action.JsonID" parameterType="int">
+		select * from enterreq where board_number = #{board_number}
+	</select>
+</mapper>
