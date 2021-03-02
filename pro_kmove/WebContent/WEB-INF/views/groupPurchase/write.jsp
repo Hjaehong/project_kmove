@@ -9,6 +9,7 @@
 <title>게시판 글쓰기</title>
 <link rel="stylesheet" type="text/css" href="${root}/css/main.css"/>
 <link rel="stylesheet" type="text/css" href="${root}/css/groupPurchase/style.css"/>
+<script src="https://cdn.ckeditor.com/ckeditor5/25.0.0/classic/ckeditor.js"></script>
 </head>
 <body>
 	<b>
@@ -68,7 +69,7 @@
 			</span>
 		</div>
 		
-		<div class="line" style="height:230px;">
+		<div class="line" style="height:230px;" id="content_id">
 			<label class="title" style="height:230px;">내용</label>
 			<span class="content" style="height:230px;">
 				<textarea rows="14" cols="58" name="contents"></textarea>
@@ -83,5 +84,6 @@
 			<input type="button" value="목록보기" onclick="location.href='${root}/groupPurchase/list.do?pageNumber=${pageNumber}'"/>
 		</div>
 	</form>
+	<!--<script src="${root}/awriteJS/ckeditor.js"></script> --> 
 </body>
 </html>

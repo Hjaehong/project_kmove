@@ -45,7 +45,7 @@ public class GroupEnterBoardDao {
 		try {
 			session = sqlSessionFactory.openSession();
 			valueList = session.selectList("groupboardList", hMap);
-			
+			System.out.println("valueList : " + valueList.toString());
 			System.out.println("valueList size : "+valueList.size());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,6 +110,60 @@ public class GroupEnterBoardDao {
 			session.close();
 		}
 		
+		return check;
+	}
+	public List<GroupEnterBoardDto> getAllimList(String id, int board_number){
+		List<GroupEnterBoardDto> list = null;
+		HashMap<Object, Object> hmap = new HashMap<Object, Object>();
+		hmap.put("id", id);
+		hmap.put("board_number", board_number);
+		try {
+			session = sqlSessionFactory.openSession();
+			list = session.selectList("getAllim", hmap);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return list;
+	}
+	
+	public String getMasterID(String board_number) {
+		String masterID =null;
+		try {
+			session = sqlSessionFactory.openSession();
+			masterID = session.selectOne("getMasterID", board_number);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return masterID;
+	}
+	public void peoplecount(String board_number) {
+		try {
+			session = sqlSessionFactory.openSession();
+			session.update("peoplecountUp", board_number);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+	}	
+	public int dontPeople(String pushboard) {
+		int check = 0;
+		GroupEnterBoardDto bt = null;
+		try {
+			session = sqlSessionFactory.openSession();
+			bt = session.selectOne("dontP",pushboard);
+			if(bt != null) check =1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
 		return check;
 	}
 }

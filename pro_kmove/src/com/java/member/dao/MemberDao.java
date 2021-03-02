@@ -120,43 +120,53 @@ public class MemberDao {
 		return check;
 	}
 	
-//	public int check_id(int board_number, String id) {
-//		int check =0;
-//		HashMap<Object, Object> map = new HashMap<Object, Object>();
-//		map.put("board_number", board_number);
-//		map.put("id", id);
-//		
-//		try {
-//			session = sqlSessionFactory.openSession();
-//			check = session.insert("check_id", map);
-//			session.commit();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			session.close();
-//		}
-//		
-//		return check;
-//	}
-//	
-//	public int isMine(String id, int board_number) {
-//		int check =0;
-//		HashMap<Object, Object> map = new HashMap<Object, Object>();
-//		map.put("id", id);
-//		map.put("board_number", board_number);
-//		try {
-//			session = sqlSessionFactory.openSession();
-//			String aa = session.selectOne("isMine", map);
-//			System.out.println("1반환왜안해 "+aa);
-//			check = Integer.parseInt(aa);
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}finally {
-//			session.close();
-//		}
-//		
-//		return check;
-//	}
+	public MemberDto select(String id, String password) {
+		MemberDto memberDto=null;
+		HashMap<String, String> hMap = new HashMap<String, String>();
+		hMap.put("id", id);
+		hMap.put("password", password);
+		
+		try {
+			session=sqlSessionFactory.openSession();
+			memberDto=session.selectOne("myPageCheck", hMap);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return memberDto;
+	}
+	
+	public String findId(MemberDto memberDto) {
+		String id=null;
+		
+		try {
+			session=sqlSessionFactory.openSession();
+			id=session.selectOne("findId", memberDto);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return id;
+	}
+	
+	public String findPwd(MemberDto memberDto) {
+		String password=null;
+		
+		try {
+			session=sqlSessionFactory.openSession();
+			password=session.selectOne("findPwd", memberDto);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return password;
+	}
+	
 }
 

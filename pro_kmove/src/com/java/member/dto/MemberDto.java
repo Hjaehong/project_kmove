@@ -2,28 +2,21 @@ package com.java.member.dto;
 
 public class MemberDto {
 	private int member_number;
+	
 	private String id;
 	private String password;
 	private String name;
 	private String nickname;
+	private String zipcode;
+	private String address1;
+	private String address2;
 	private String phone1;
 	private String phone2;
 	private String phone3;
 	
 	private String grade;
-	private String zipcode;
-	private String address;
 	
 	private int ban;
-	private int board_number;
-	
-	public int getBoard_number() {
-		return board_number;
-	}
-
-	public void setBoard_number(int board_number) {
-		this.board_number = board_number;
-	}
 
 	public int getMember_number() {
 		return member_number;
@@ -65,6 +58,30 @@ public class MemberDto {
 		this.nickname = nickname;
 	}
 
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getAddress1() {
+		return address1;
+	}
+
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
 	public String getPhone1() {
 		return phone1;
 	}
@@ -97,22 +114,6 @@ public class MemberDto {
 		this.grade = grade;
 	}
 
-	public String getZipcode() {
-		return zipcode;
-	}
-
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public int getBan() {
 		return ban;
 	}
@@ -124,8 +125,12 @@ public class MemberDto {
 	@Override
 	public String toString() {
 		return "MemberDto [member_number=" + member_number + ", id=" + id + ", password=" + password + ", name=" + name
-				+ ", nickname=" + nickname + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3=" + phone3
-				+ ", grade=" + grade + ", zipcode=" + zipcode + ", address=" + address + ", ban=" + ban
-				+ ", board_number=" + board_number + "]";
+				+ ", nickname=" + nickname + ", zipcode=" + zipcode + ", address1=" + address1 + ", address2="
+				+ address2 + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3=" + phone3 + ", grade=" + grade
+				+ ", ban=" + ban + "]";
 	}
+
+	
+
+	
 }

@@ -2,24 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<c:set var="memberDto" value="${memberDto}" scope="session"/>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 수정</title>
 </head>
 <body>
 	<c:set var="root" value="${pageContext.request.contextPath}"/>
-	
 	<c:if test="${check > 0}">
 		<script type="text/javascript">
-			alert("회원수정 되었습니다.");
-			location.href="${root}/member/main.do";
+			//alert("회원수정에 성공했습니다.");
+			location.href="${root}/member/updateCop.do";
 		</script>
 	</c:if>
 	
 	<c:if test="${check == 0}">
 		<script type="text/javascript">
-			alert("회원수정 되지 않았습니다.");
+			alert("회원수정에 실패했습니다.");
 			location.href="${root}/member/update.do";
 		</script>
 	</c:if>

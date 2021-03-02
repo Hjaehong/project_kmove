@@ -11,11 +11,11 @@
 	<c:set var="root" value="${pageContext.request.contextPath}"/>
 	
 	<c:remove var="id" scope="session"/>
-	<c:remove var="memberLevel" scope="session"/>
+	<c:remove var="member_number" scope="session"/>
 	
 	<script type="text/javascript">
 		alert("로그아웃 되었습니다.");
-		location.href="${root}/member/main.do";
+		location.href="./../index.jsp";
 	</script>
 	
 </body>

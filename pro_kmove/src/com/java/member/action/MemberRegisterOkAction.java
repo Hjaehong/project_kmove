@@ -18,17 +18,18 @@ public class MemberRegisterOkAction implements Command {
 		memberDto.setPassword(request.getParameter("password"));
 		memberDto.setName(request.getParameter("name"));
 		memberDto.setNickname(request.getParameter("nickname"));
+		memberDto.setZipcode(request.getParameter("zipcode"));
+		memberDto.setAddress1(request.getParameter("address1"));
+		memberDto.setAddress2(request.getParameter("address2"));
 		memberDto.setPhone1(request.getParameter("phone1"));
 		memberDto.setPhone2(request.getParameter("phone2"));
 		memberDto.setPhone3(request.getParameter("phone3"));
-		memberDto.setZipcode(request.getParameter("sample4_postcode"));
-		memberDto.setAddress(request.getParameter("mainAddress"));
-		memberDto.setMember_number(Integer.parseInt(request.getParameter("member_number")));
-		
+		memberDto.setGrade("manager");
 		logger.info(logMsg +memberDto.toString());
 		
 		int check=MemberDao.getInstance().insert(memberDto);
 		logger.info(logMsg + check);
+		
 		
 		request.setAttribute("check", check);
 		

@@ -12,34 +12,31 @@
 		<result column="nickname" property="nickname"/>
 		
 		<result column="zipcode" property="zipcode"/>
-		<result column="address" property="address"/>
+		<result column="address1" property="address1"/>
+		<result column="address2" property="address2"/>
 		<result column="phone1" property="phone1"/>
 		<result column="phone2" property="phone2"/>
 		<result column="phone3" property="phone3"/>
 
 		<result column="ban" property="ban"/>
 		<result column="grade" property="grade"/>
-		<result column="profile" property="profile"/>
-		<result column="board_number" property="board_number"/>
-		
 	</resultMap>
 	
 	<insert id="memberInsert" parameterType="com.java.member.dto.MemberDto">
-		insert into member (member_number, id, password, name, nickname, zipcode, address, phone1, phone2, phone3, ban, grade, profile, board_number) 
+		insert into member 
 		values(member_number_seq.nextval, 
 		#{id}, 
 		#{password},
 		#{name},  
 		#{nickname}, 
 		#{zipcode}, 
-		#{address}, 
+		#{address1}, 
+		#{address2},
 		#{phone1},
 		#{phone2},
 		#{phone3}, 
 		0,
-		0,
-		0,
-		#{board_number, jdbcType=NUMERIC})
+		#{grade})
 	</insert>
 	
 	<select id="memberIdCheck" parameterType="String" resultType="String">
@@ -47,7 +44,7 @@
 	</select>
 	
 	<select id="memberLoginCheck" parameterType="java.util.HashMap" resultType="String">
-		select grade from member where id = #{id} and password = #{password}
+		select * from member where id = #{id} and password = #{password}
 	</select>
 	
 	<delete id="memberDelete" parameterType="java.util.HashMap">
@@ -58,26 +55,36 @@
 		select * from member where id = #{id}
 	</select>
 	
-	<update id="memberUpdate" parameterType="com.java.member.dao.MemberDao">
+	<update id="memberUpdate" parameterType="com.java.member.dto.MemberDto">
 		update member set 
-		password= #{password}, 
-		email= #{email}, 
-		zipcode= #{zipcode}, 
-		address= #{address}, 
-		job= #{job}, 
-		mailing= #{mailing}, 
-		interest= #{interest} 
-		where num= #{num}
+		password=#{password}, 
+		nickname=#{nickname}, 
+		zipcode=#{zipcode}, 
+		address1=#{address1}, 
+		address2=#{address2},
+		phone1=#{phone1}, 
+		phone2=#{phone2},
+		phone3=#{phone3} 
+		where member_number=#{member_number}
 	</update>
-	<!-- 
-	<insert id="check_id" parameterType="java.util.HashMap">
-		insert into member(board_number) select board_number from member where id=#{id})
-	</insert>
 	
-	<select id="isMine" parameterType="java.util.HashMap" resultType="String">
-		select 1 from member where id=#{id} and board_number=#{board_number}
+	<select id="myPageCheck" parameterType="java.util.HashMap" resultMap="memberDto">
+		select * from member where id = #{id} and password = #{password}
 	</select>
-	 -->
+	
+	<select id="findId" parameterType="com.java.member.dto.MemberDto" resultType="String">
+		select id from member where name=#{name} and phone1=#{phone1}
+		and phone2=#{phone2}
+		and phone3=#{phone3}
+	</select>
+	
+	<select id="findPwd" parameterType="com.java.member.dto.MemberDto" resultType="String">
+		select password from member where id=#{id}
+		and name=#{name}
+		and phone1=#{phone1}
+		and phone2=#{phone2}
+		and phone3=#{phone3}
+	</select>
 </mapper>
 
 

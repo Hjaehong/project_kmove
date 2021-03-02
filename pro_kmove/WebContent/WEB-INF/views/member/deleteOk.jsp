@@ -5,15 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 탈퇴</title>
+<title>회원탈퇴 결과</title>
 </head>
 <body>
 	<c:set var="root" value="${pageContext.request.contextPath}" />
 
 	<c:if test="${check > 0}">
 		<c:remove var="id" scope="session"/>
-		<c:remove var="memberLevel" scope="session"/>
-		
+		<c:remove var="member_number" scope="session"/>
 		<script type="text/javascript">
 			alert("회원탈퇴가 완료되었습니다.");
 			location.href="${root}/member/register.do";

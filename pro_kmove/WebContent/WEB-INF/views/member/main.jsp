@@ -12,7 +12,10 @@
 	<div id="topMenu">
 		<jsp:include page="/template/topMenu.jsp"/>
 	</div>
-			
+	<div id="loginOkMenu">
+		<jsp:include page="/template/loginOkMenu.jsp"/>
+	</div>
+	
 	<c:if test="${id !=null}">
 		<div align="center">
 			안녕하세요. (${id})님 즐거운 시간 되세요. <br/>

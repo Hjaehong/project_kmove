@@ -51,4 +51,37 @@ public class EnterID{
 			}
 		return jsonid;
 	}
+	public int delete(String id, String board_number) {
+		int check = 0;
+		HashMap<String, Object> hmap = new HashMap<String, Object>();
+		hmap.put("id", id);
+		hmap.put("board_number", board_number);
+		
+		try {
+			session = sqlSessionFactory.openSession();
+			check = session.delete("cancel", hmap);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		
+		return check;
+	}
+	
+	public void changeOC(String id, String board_number) {
+		HashMap<String, Object> hmap = new HashMap<String, Object>();
+		hmap.put("id", id);
+		hmap.put("board_number", board_number);
+		try {
+			session = sqlSessionFactory.openSession();
+			session.update("changeOC",hmap);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+	}
 }

@@ -9,10 +9,11 @@
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <title>게시판 읽기</title>
 <link rel="stylesheet" type="text/css" href="${root}/css/main.css" />
-<link rel="stylesheet" type="text/css"
-	href="${root}/css/groupPurchase/style.css" />
+<link rel="stylesheet" type="text/css" href="${root}/css/groupPurchase/style.css" />
 <script type="text/javascript" src="${root}/XHR/xhr.js"></script>
 <script type="text/javascript" src="${root}/enterJS/enter.js"></script>
+<script type="text/javascript" src="${root}/enterJS/delete.js"></script>
+<script type="text/javascript" src="${root}/enterJS/okToServer.js"></script>
 <script type="text/javascript">
 	function replyFun(root, board_number, group_number, sequence_number,
 			sequence_level, pageNumber) {
@@ -44,11 +45,23 @@
 			<td align="center" height="20" width="125">작성자</td>
 			<td align="center" height="20" width="125">${groupEnterboardDto.writer}</td>
 
-			<td align="center" height="20" width="125">작성일</td>
+			<td align="center" height="20" width="125">마감날짜</td>
 			<td align="center" height="20" width="125"><fmt:formatDate
-					value="${groupEnterboardDto.write_date}"
-					pattern="yy-MM-dd HH:mm:ss" /></td>
+					value="${groupEnterboardDto.end_date}"
+					pattern="yy-MM-dd" /></td>
 		</tr>
+		<c:if test="${groupEnterboardDto.enterpeople < groupEnterboardDto.peoplecount}">
+			<tr>
+				<td align="center" height="20" width="125" colspan="2">인원수</td>
+				<td align="center" height="20" width="125" colspan="2">${groupEnterboardDto.enterpeople} / ${groupEnterboardDto.peoplecount}</td>
+			</tr>
+		</c:if>
+		<c:if test="${groupEnterboardDto.enterpeople == groupEnterboardDto.peoplecount}">
+			<tr>
+				<td align="center" height="20" width="125" colspan="2">인원수</td>
+				<td align="center" height="20" width="125" colspan="2">${groupEnterboardDto.enterpeople} / ${groupEnterboardDto.peoplecount}</td>
+			</tr>
+		</c:if>
 
 		<tr>
 			<td align="center" height="200" width="125">글내용</td>
@@ -73,8 +86,13 @@
 					
 					<!-- 기존 참여자 -->
 					<c:forEach var="list" items="${enterlist}">
-						<div class="replyDiv">
-							<span class="enteredid">id : ${list.id}</span> 
+						<div class="enterDiv" id="${list.id}">
+							<span class="cssid">id : ${list.id}
+								<c:if test="${list.okcancel!=1}"> 
+									<a href="javascript:okToServer('${list.id}', '${root}','${list.board_number}')">수락 &nbsp;</a>
+									<a href="javascript:cancelToServer('${list.id}', '${root}','${list.board_number}')">거절</a>
+								</c:if>
+							</span>
 						</div>
 					</c:forEach>
 				</div>

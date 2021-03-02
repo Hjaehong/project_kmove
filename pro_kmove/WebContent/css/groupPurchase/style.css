@@ -49,4 +49,14 @@ span{
 	border-color:#000000;border-bottom-width:0px;
 	padding:2px 0px 2px 2px;
 }
+
+.allim:hover .allimChang{
+	display:block;
+}
+.allimChang{
+	display:none;
+	width: 200px;
+	height: 200px;
+}
+
 /* -- WRITE UPDATE STYLE END -------------------------------------- */

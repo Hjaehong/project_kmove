@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<c:set var="root" value="${pageContext.request.contextPath}" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원가입</title>
-<script src="${root}/javascipt/member/member.js" type="text/javascript"></script>
+<meta charset="UTF-8">
+<title>form</title>
+<link rel="stylesheet" href="${root}/css/styleact.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -37,108 +38,91 @@
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample4_postcode').value = data.zonecode;
-                document.getElementById("mainAddress").value = roadAddr + " " + data.jibunAddress;
-                //document.getElementById("sample4_roadAddress").value = roadAddr;
-                //document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-                
-                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                /*if(roadAddr !== ''){
-                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-                } else {
-                    document.getElementById("sample4_extraAddress").value = '';
-                }*/
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+
 
                 var guideTextBox = document.getElementById("guide");
-                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-                if(data.autoRoadAddress) {
-                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-                    guideTextBox.style.display = 'block';
-
-                } else if(data.autoJibunAddress) {
-                    var expJibunAddr = data.autoJibunAddress;
-                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-                    guideTextBox.style.display = 'block';
-                } else {
-                    guideTextBox.innerHTML = '';
-                    guideTextBox.style.display = 'none';
-                }
+               
             }
         }).open();
     }
 </script>
 </head>
 <body>
-	<div align="center">
-		<font size="2"><b>회원가입(*필수입력사항입니다.)</b></font>
-	</div>
-
-	<div align="center">
+	<nav class="menu">
+		<div class="search">
+			<input type="text" placeholder="Search">
+			<input type="image" src="${root}/img/click1.png" alt="검색">
+		</div>
+		<div id="contents">
+			<a href="#" ><span><img alt="로고	" src="${root}/img/logo3.png"></span></a>
+			<a href="#" ><span>공동구매</span></a>
+			<a href="#" ><span>해외직구</span></a>
+			<a href="#" ><span>주문제작</span></a>
+			<a href="#" ><span>자유게시판</span></a>
+			<a href="#" ><span>로그인</span></a>
+			<a href="#" class=on><span>회원가입</span></a>
+			<span></span>
+		</div> 
+	</nav>	
+	<div class="wrap">
+		<h1>#.09<br><span id="act_logo">회원가입</span></h1>
 		<form class="form_style" name="memberForm" action="${root}/member/registerOk.do" 
 		          method="post" onsubmit="return registerForm(this)">
-		                                          <%-- 기본값 : 참(true) --%>
-		          <input type="hidden" name="member_number" value="${member_number}"/>
-			<div class="line">
-				<label class="title">아이디</label>
-				<span class="content">
-					*<input type="text" name="id" />	
-					<input type="button" value="아이디중복" 
-					                             onclick="idCheck('${root}', memberForm)" />
-				</span>
-			</div>
-			
-			<div class="line">
-				<label  class="title">비밀번호</label>
-				<span class="content">
-					*<input type="password" name="password" />
-				</span>
-			</div>
-			
-			<div class="line">
-				<label class="title">비밀번호확인</label>
-				<span class="content">
-					*<input type="password" name="passwordCheck"/>
-				</span>
-			</div>
-	
-			<div class="line">
-				<label class="title">이름</label>
-				<span class="content">
-					*<input type="text" name="name"/>
-				</span>
-			</div>
-
-			<div class="line">
-				<label class="title">닉네임</label>
-				<span class="content">
-					*<input type="text" name="nickname" />
-				</span>
-			</div>
-			
-			<div class="line">
-				<label class="title">핸드폰</label>
-				<span class="content">
-					*<select name="phone1">
-						<option value="010">010</option>
-						<option value="011">011</option>
-						<option value="070">070</option>
-					 </select>
-					-<input type="text" name="phone2" size=9/>
-					-<input type="text" name="phone3" size=9/>
-				</span>
-			</div>
-			
-			<div class="line">
-				<input type="text" id="sample4_postcode" name="sample4_postcode" placeholder="우편번호">
+			<dl>
+				<dt>아이디</dt>
+				<dd>*<input type="text" name="id" onkeydown="inputIdCheck()" placeholder="아이디 입력">
+					<input type="button" value="아이디중복" onclick="idCheck('${root}', memberForm)"/>
+					<input type="hidden" name="idCheckCheck" value="idUnCheck" />
+				</dd>
+			</dl>
+			<dl>
+				<dt>비밀번호</dt>
+				<dd><input type="password" name="password" placeholder="비밀번호 입력"></dd>
+			</dl>
+			<dl>
+				<dt>비밀번호 확인</dt>
+				<dd><input type="password" name="passwordCheck" placeholder="비밀번호 재입력"></dd>
+			</dl>
+			<dl>
+				<dt>이름</dt>
+				<dd><input type="text" name="name" placeholder="이름 입력"></dd>
+			</dl>
+			<dl>
+				<dt>연락처</dt>
+				<dd>*<select name="phone1">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="070">070</option>
+				 </select>
+				-<input type="text" name="phone2" size=4 maxlength="4"/>
+				-<input type="text" name="phone3" size=4 maxlength="4"/>
+				</dd>
+			</dl>
+			<dl>
+				<dt>닉네임</dt>
+				<dd>*<input type="text" name="nickname" placeholder="닉네임"></dd>
+			</dl>
+			<dl>
+				<dt>주소</dt>
+				<dd><input type="text" id="sample4_postcode" name="zipcode" placeholder="우편번호">
 				<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-				<input type="text" id="mainAddress" name="mainAddress" palceholder="전체 주소" size="50">
-				<span id="guide" style="color:#999;display:none"></span>
-			</div>
-			<div class="line" style="width:498px; border-width:2px; text-align:center;">
-				<input type="submit" value="가입" />
-				<input type="reset" value="취소" onclick="location.href='../index.jsp'"/>
-			</div>
+				<input type="text" id="sample4_roadAddress" name="address1" placeholder="도로명주소"><br>
+				<input type="text" id="sample4_detailAddress" name="address2" placeholder="상세주소">
+				</dd>
+			</dl>
+			<input type="submit" value="회원가입">
 		</form>
 	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('nav a').on('click',function(){
+				$(this).addClass('on');
+				$(this).siblings().removeClass('on');
+			});
+		});
+	</script>
+	
 </body>
 </html>

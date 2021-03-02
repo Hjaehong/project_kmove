@@ -1,15 +1,20 @@
 package com.java.group.enter.action;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.java.command.Command;
 import com.java.group.enter.dao.GroupEnterBoardDao;
 import com.java.group.enter.dto.GroupEnterBoardDto;
-import com.java.json.action.JsonID;
-import com.java.json.dao.EnterID;
+import com.java.trigDao.TrigDao;
+import com.java.trigDto.TrigDto;
 
 public class GroupEnterBoardListAction implements Command {
 
@@ -29,6 +34,8 @@ public class GroupEnterBoardListAction implements Command {
 		int count = GroupEnterBoardDao.getInstance().getCount();
 		logger.info(logMsg + "count" + count);
 		
+		TrigDao.getInstance().changeDel();
+		
 		List<GroupEnterBoardDto> groupboardList = null;
 		
 		if(count > 0) {
@@ -36,7 +43,12 @@ public class GroupEnterBoardListAction implements Command {
 			logger.info(logMsg + "listSize: " + groupboardList.size());
 		}
 		
+		HttpSession session=request.getSession();
+		String id = (String) session.getAttribute("id");
 		
+		List<TrigDto> trig = TrigDao.getInstance().allim(id); // 현재 접속된 id 와 같은 알림 받기
+
+		request.setAttribute("trig", trig);
 		request.setAttribute("boardSize", boardSize);		
 		request.setAttribute("currentPage", currentPage);	
 		request.setAttribute("groupboardList", groupboardList);		

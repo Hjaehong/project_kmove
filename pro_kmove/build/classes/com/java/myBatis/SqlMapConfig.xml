@@ -19,5 +19,6 @@
     <mapper resource="com/java/group/enter/mapper/GroupEnterBoardMapper.xml"/>
     <mapper resource="com/java/member/mapper/MemberMapper.xml"/>
     <mapper resource="com/java/json/mapper/enterReqMapper.xml"/>
+    <mapper resource="com/java/trig/mapper/TrigMapper.xml"/>
   </mappers>
 </configuration>

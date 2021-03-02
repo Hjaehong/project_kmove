@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입 체크</title>
 </head>
 <body>
 	<c:set var="root" value="${pageContext.request.contextPath}"/>
@@ -13,7 +13,7 @@
 	<c:if test="${check > 0}">
 		<script type="text/javascript">
 			alert("회원가입 완료 되었습니다.");
-			location.href="${root}/member/login.do";
+			location.href="../index.jsp";
 		</script>
 	</c:if>
 	

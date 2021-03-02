@@ -22,7 +22,8 @@
 		<result column="group_number" property="group_number"/>
 		<result column="sequence_number" property="sequence_number"/>
 		<result column="sequence_level" property="sequence_level"/>
-		<result column="member_number" property="member_number"/>
+		<result column="member_number" property="member_number"/> 
+		<result column="enterpeople" property="enterpeople"/> 
 		
 		
 	</resultMap>
@@ -40,11 +41,11 @@
 	<insert id="boardInsert" parameterType="com.java.group.enter.dto.GroupEnterBoardDto">
 		insert into board (
 			board_number, writer, subject, contents, board_password, 
-			write_date, end_date, id, price, peoplecount, kakaoID, picture_load, read_count, group_number, sequence_number, sequence_level) 
+			write_date, end_date, id, price, peoplecount, kakaoID, picture_load, read_count, group_number, sequence_number, sequence_level, enterpeople) 
 		values(board_board_number_seq.nextval, 
 			#{writer},#{subject}, #{contents}, #{board_password}, 
 			sysdate, #{end_date, jdbcType=VARCHAR}, #{id, jdbcType=VARCHAR}, #{price}, #{peoplecount}, #{kakaoID}, #{picture_load, jdbcType=VARCHAR},
-			#{read_count},#{group_number},#{sequence_number},#{sequence_level})
+			#{read_count},#{group_number},#{sequence_number},#{sequence_level}, 0)
 	</insert>
 	
 	
@@ -67,6 +68,21 @@
     			SELECT board_number FROM member
    				WHERE board.id = #{id} and board.board_number = #{board_number}
 			)
+	</select >
+	
+	<select id="getAllim" parameterType="java.util.HashMap" resultType="com.java.group.enter.dto.GroupEnterBoardDto">
+		select * from board where id=#{id} and board_number=#{board_number}
 	</select>
 	
+	<select id="getMasterID" parameterType="String" resultType="String">
+		select id from board where board_number=#{board_number} 
+	</select>
+	
+	<update id="peoplecountUp" parameterType="String">
+		update board set enterpeople = enterpeople+1 where board_number = #{board_number}
+	</update>
+	
+	<select id="dontP" parameterType="String" resultType="com.java.group.enter.dto.GroupEnterBoardDto">
+		select * from board where board_number=#{pushboard} and peoplecount = enterpeople
+	</select>
 </mapper>
