@@ -25,8 +25,8 @@
 			<a href="#" ><span>해외직구</span></a>
 			<a href="#" ><span>주문제작</span></a>
 			<a href="#" ><span>자유게시판</span></a>
-			<a href="${root}/member/login.do" ><span>로그인</span></a>
-			<a href="${root}/member/register.do" ><span>회원가입</span></a>
+			<a href="../main.jsp" ><span>로그아웃</span></a>
+			<a href="${root}/member/myPage.do"><span>마이페이지</span></a>
 			<span></span>
 		</div> 
 	</nav>

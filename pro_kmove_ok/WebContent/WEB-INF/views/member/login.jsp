@@ -9,6 +9,11 @@
 <title>form</title>
 <link rel="stylesheet" href="${root}/css/styleact.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	function loginGo(){
+		alert("로그인 후 사용이 가능합니다.");
+	}
+</script>
 </head>
 <body>
 	<nav class="menu">
@@ -18,10 +23,10 @@
 		</div>
 		<div id="contents">
 			<a href="${root}/main.jsp" ><span><img alt="로고	" src="${root}/img/logo3.png"></span></a>
-			<a href="#" ><span>공동구매</span></a>
+			<a href="${root}/member/login.do" onclick="loginGo()"><span>공동구매</span></a>
 			<a href="#" ><span>해외직구</span></a>
 			<a href="#" ><span>주문제작</span></a>
-			<a href="#" ><span>자유게시판</span></a>
+			<a href="${root}/member/login.do" onclick="loginGo()"><span>자유게시판</span></a>
 			<a href="../login.jsp" class=on><span>로그인</span></a>
 			<a href="${root}/member/register.do" ><span>회원가입</span></a>
 			<span></span>
