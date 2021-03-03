@@ -1,0 +1,170 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none; 
+	list-style: none;
+}
+/*search*/
+.search input[type=text],
+.search input[type=image]{
+	vartical-align: middle;
+}
+
+.search input[type=text]{
+	border: 1px solid #999;
+	padding: 0 10px;
+	font-family:"Roboto","Note Sans KR",sans-serif;
+	width: 500px;
+	height: 30px;
+	line-height: 40px;
+	box-sizing: border-box;
+	margin-left: 100px
+}
+
+/*menu*/
+.menu { 
+	position: fixed; 
+	left: 0; 
+	top: 0; 
+	width: 100%; 
+	background: white; 
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.menu div{
+	display:flex;
+	position: relative;
+	width: 700px; 
+	margin: 0 auto;
+}
+.menu div a{
+	flex: 1; 
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #8f8f8f;
+}
+.menu div a.on{
+	color: #000;
+}
+.menu div > span{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100px;
+	height: 3px;
+	background: #C240F5;
+	opacity: 0;
+	transition: all 0.5s;
+}
+.menu div a:nth-child(1).on ~ span{ left: 0;opacity: 1;}
+.menu div a:nth-child(2).on ~ span{ left: 100px;opacity: 1;}
+.menu div a:nth-child(3).on ~ span{ left: 200px;opacity: 1;}
+.menu div a:nth-child(4).on ~ span{ left: 300px;opacity: 1;}
+.menu div a:nth-child(5).on ~ span{ left: 400px;opacity: 1;}
+.menu div a:nth-child(6).on ~ span{ left: 500px;opacity: 1;}
+.menu div a:nth-child(7).on ~ span{ left: 600px;opacity: 1;}
+
+#act_logo{
+	font-size: 20px;
+	color: #C240F5;
+}
+body{
+	background: #370059;
+}
+
+.wrap{
+	width: 600px;
+	margin: 0 auto;
+	padding: 50px;
+	box-sizing: border-box;
+	background: #fff;
+	margin-top: 40px;
+}
+.wrap h1{
+	padding-bottom: 12px;
+	border-bottom: 3px solid #000;
+	font-size: 32px;
+	letter-spacing: -2px;
+}
+
+.wrap form{
+	margin-top: 30px;
+}
+
+.wrap dl{
+	margin-top: 10px;
+	margin-left: 80px;
+	font-size: 0;
+}
+.wrap dl:first-child{
+	margin-top: 0; 	
+}
+
+.wrap dt,
+.wrap dd{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+}
+.wrap dt{
+	width: 25%;
+}
+.wrap dd{
+	width: 75%;
+}
+
+.wrap input[type="text"],
+.wrap input[type="password"],
+.wrap input[type="email"],
+.wrap select{
+	padding: 10px 15px;
+	border: 1px solid #ccc; 
+	border-radius: 2px;
+}
+.wrap input[type="tel"]{
+	padding: 10px;
+	border: 1px solid #ccc; 
+	border-radius: 2px;
+	width: 38px;
+}
+	
+.wrap input[type="button"]{
+	padding: 5px 10px;
+	border:0;
+	background: #C240F5;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 2px;
+}
+
+.wrap input[type="submit"]{
+	display: block;
+	margin: 30px auto 0 auto;
+	padding: 16px 50px;
+	border: 0;
+	border-radius: 20px;
+	background: #C240F5;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+}
+#act_find{
+	align-content: center;
+	text-align: center;
+	margin: 20px auto 0 auto;
+	
+}
+
+#act_find > a {
+	border-left: 1px solid #000;
+	padding-left: 3px;
+}
+#act_find > a:first-child {
+	border: none;
+	margin-left: 0px;
+	}
+	

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.java.member.mapper.MemberMapper">
+	<resultMap type="com.java.member.dto.MemberDto" id="memberDto">
+		<result column="member_number" property="member_number"/> 
+		<result column="id" property="id"/>
+		<result column="password" property="password"/>
+		<result column="name" property="name"/>
+		<result column="nickname" property="nickname"/>
+		
+		<result column="zipcode" property="zipcode"/>
+		<result column="address1" property="address1"/>
+		<result column="address2" property="address2"/>
+		<result column="phone1" property="phone1"/>
+		<result column="phone2" property="phone2"/>
+		<result column="phone3" property="phone3"/>
+
+		<result column="ban" property="ban"/>
+		<result column="grade" property="grade"/>
+	</resultMap>
+	
+	<insert id="memberInsert" parameterType="com.java.member.dto.MemberDto">
+		insert into member 
+		values(member_number_seq.nextval, 
+		#{id}, 
+		#{password},
+		#{name},  
+		#{nickname}, 
+		#{zipcode}, 
+		#{address1}, 
+		#{address2},
+		#{phone1},
+		#{phone2},
+		#{phone3}, 
+		0,
+		#{grade})
+	</insert>
+	
+	<select id="memberIdCheck" parameterType="String" resultType="String">
+		select id from member where id = #{id}
+	</select>
+	
+	<select id="memberLoginCheck" parameterType="java.util.HashMap" resultType="String">
+		select * from member where id = #{id} and password = #{password}
+	</select>
+	
+	<delete id="memberDelete" parameterType="java.util.HashMap">
+		delete from member where id = #{id} and password = #{password}
+	</delete>
+	
+	<select id="memberUpdateId" parameterType="String" resultMap="memberDto">
+		select * from member where id = #{id}
+	</select>
+	
+	<update id="memberUpdate" parameterType="com.java.member.dto.MemberDto">
+		update member set 
+		password=#{password}, 
+		nickname=#{nickname}, 
+		zipcode=#{zipcode}, 
+		address1=#{address1}, 
+		address2=#{address2},
+		phone1=#{phone1}, 
+		phone2=#{phone2},
+		phone3=#{phone3} 
+		where member_number=#{member_number}
+	</update>
+	
+	<select id="myPageCheck" parameterType="java.util.HashMap" resultMap="memberDto">
+		select * from member where id = #{id} and password = #{password}
+	</select>
+	
+	<select id="findId" parameterType="com.java.member.dto.MemberDto" resultType="String">
+		select id from member where name=#{name} and phone1=#{phone1}
+		and phone2=#{phone2}
+		and phone3=#{phone3}
+	</select>
+	
+	<select id="findPwd" parameterType="com.java.member.dto.MemberDto" resultType="String">
+		select password from member where id=#{id}
+		and name=#{name}
+		and phone1=#{phone1}
+		and phone2=#{phone2}
+		and phone3=#{phone3}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
