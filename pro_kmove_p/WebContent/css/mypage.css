@@ -1,0 +1,255 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+	text-decoration: none; 
+	list-style: none;
+}
+
+.search input[type=text],
+.search input[type=image]{
+	vartical-align: middle;
+}
+
+.search input[type=text]{
+	border: 1px solid #999;
+	padding: 0 10px;
+	font-family:"Roboto","Note Sans KR",sans-serif;
+	width: 500px;
+	height: 30px;
+	line-height: 40px;
+	box-sizing: border-box;
+	margin-left: 100px
+}
+
+/*menu*/
+.menu { 
+	position: fixed; 
+	left: 0; 
+	top: 0; 
+	width: 100%; 
+	background: white; 
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.menu div{
+	display:flex;
+	position: relative;
+	width: 700px; 
+	margin: 0 auto;
+}
+.menu div a{
+	flex: 1; 
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #8f8f8f;
+}
+.menu div a.on{
+	color: #000;
+}
+.menu div > span{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100px;
+	height: 3px;
+	background: #C240F5;
+	opacity: 0;
+	transition: all 0.5s;
+}
+.menu div a:nth-child(1).on ~ span{ left: 0;opacity: 1;}
+.menu div a:nth-child(2).on ~ span{ left: 100px;opacity: 1;}
+.menu div a:nth-child(3).on ~ span{ left: 200px;opacity: 1;}
+.menu div a:nth-child(4).on ~ span{ left: 300px;opacity: 1;}
+.menu div a:nth-child(5).on ~ span{ left: 400px;opacity: 1;}
+.menu div a:nth-child(6).on ~ span{ left: 500px;opacity: 1;}
+.menu div a:nth-child(7).on ~ span{ left: 600px;opacity: 1;}
+
+#act_logo{
+	font-size: 20px;
+	color: #C240F5;
+}
+body{
+	background: white;
+}
+
+.wrap{
+	width: 600px;
+	margin: 0 auto;
+	padding: 50px;
+	box-sizing: border-box;
+	background: #fff;
+	margin-top: 40px;
+}
+.wrap h1{
+	padding-bottom: 12px;
+	border-bottom: 3px solid #000;
+	font-size: 32px;
+	letter-spacing: -2px;
+}
+
+.wrap form{
+	margin-top: 30px;
+}
+
+.wrap dl{
+	margin-top: 10px;
+	margin-left: 80px;
+	font-size: 0;
+}
+.wrap dl:first-child{
+	margin-top: 0; 	
+}
+
+.wrap dt,
+.wrap dd{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+}
+.wrap dt{
+	width: 25%;
+}
+.wrap dd{
+	width: 75%;
+}
+
+
+
+.idx_board input[type="submit"]{
+	display: in inline-block;
+	padding: 3px;
+	border: 0;
+	border-radius: 7px;
+	background: #C240F5;
+	color: #fff;
+	cursor: pointer;
+	margin-left: 10px;
+}
+#id_all{
+	text-align: center;
+}	
+
+#act_find{
+	align-content: center;
+	text-align: center;
+	margin: 20px auto 0 auto;
+	
+}
+
+#act_find > a {
+	border-left: 1px solid #000;
+	padding-left: 3px;
+}
+#act_find > a:first-child {
+	border: none;
+	margin-left: 0px;
+	}
+	
+	
+/*board 게시판*/
+#idx_board_wrap{
+	padding: 50px 0;
+	background: #370059;
+	margin-top: 40px;
+}
+#idx_board_wrap > div{
+	width: 90%;
+	min-width: 1000px;
+	max-width: 1200px;
+	margin: 0 auto;
+	font-size: 0;
+}
+
+.idx_board{
+	display: inline-block;
+	width: 48%;
+	background: #fff;
+	border-radius: 20px;
+}
+#idx_board_wrap > div > div:nth-child(even){
+	margin-left: 4%;
+}
+#idx_board_wrap > div > div:nth-child(3),
+#idx_board_wrap > div > div:nth-child(4){
+	margin-top: 40px;
+}
+
+.idx_board .title{
+	position: relative;
+	padding: 20px;
+	border-bottom: 1px solid #aaa;
+}
+.idx_board .title .a{
+	display: inline-block;
+	vertical-align: middle
+}
+.idx_board .title .name{
+	font-size: 24px;
+	font-weight: 600;
+	letter-spacing: -2px;
+}
+.idx_board .title .more {
+	position: absolute;
+	top: 24px;
+	right: 20px;
+}
+
+.idx_board .title .more img{
+	width: 24px;
+	margin-left: 3px; 	
+}
+.idx_board .list {
+	padding: 20px;
+		
+}
+
+
+.idx_board .list ul li{
+	margin-top: 10px;
+	padding-left: 18px;
+	background: url(../img/logo.png) no-repeat 0 4px /15px;
+	font-size: 0;	
+}
+.idx_board .list ul li:first-child{
+	margin-top: 0;
+}
+
+.idx_board .list a,
+.idx_board .list span{
+	display: inline-block;
+	vertical-align: middle;
+	}
+.idx_board .list a{
+	width: 80%;
+	font-size: 14px;
+}
+.idx_board .list span{
+	width: 20%;
+	text-align: right;
+	font-size: 12px;
+	color: #777;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #000;
+    text-align: center;
+    font-size: 20px;
+}
+footer > a{
+	font-size: 15px;
+}
+
+/*.allim:hover .allimChang{
+   display:block;
+}
+.allimChang{
+   display:none;
+   width: 200px;
+   height: 200px;
+   
+}*/

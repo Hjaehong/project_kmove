@@ -1,0 +1,263 @@
+@charset "UTF-8";
+
+*{ 
+	padding: 0; 
+	margin: 0; 
+	text-decoration: none; 
+	list-style: none;
+}
+/*search*/
+.search{
+	border: solid 1px;
+	border-radius:305px;
+	width: 500px;
+}
+.search input[type=text],
+.search input[type=image]{
+	vartical-align: middle;
+}
+
+.search input[type=text]{
+	border: none;
+	margin-left: 15px;
+	padding: 0 10px;
+	font-family:"Roboto","Note Sans KR",sans-serif;
+	width: 430px;
+	height: 30px;
+	line-height: 40px;
+	box-sizing: border-box;
+	
+	}
+.search input[type=image]{
+	border-left: solid 1px #ccc;
+	margin-left: 5px;
+	padding-left: 3px; 
+}
+/*menu*/
+.menu { 
+	position: fixed; 
+	left: 0; 
+	top: 0; 
+	width: 100%; 
+	background: white; 
+	box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.contents{
+	width: 700px; 
+}
+.menu div {
+	display:flex;
+	position: relative;
+	margin: 0 auto;
+}
+.menu div a{
+	flex: 1; 
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #8f8f8f;
+}
+.menu div a.on{
+	color: #000;
+}
+.menu div > span{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100px;
+	height: 3px;
+	background: #C240F5;
+	opacity: 0;
+	transition: all 0.5s;
+}
+.menu div a:nth-child(1).on ~ span{ left: 0;opacity: 1;}
+.menu div a:nth-child(2).on ~ span{ left: 100px;opacity: 1;}
+.menu div a:nth-child(3).on ~ span{ left: 200px;opacity: 1;}
+.menu div a:nth-child(4).on ~ span{ left: 300px;opacity: 1;}
+.menu div a:nth-child(5).on ~ span{ left: 400px;opacity: 1;}
+.menu div a:nth-child(6).on ~ span{ left: 500px;opacity: 1;}
+.menu div a:nth-child(7).on ~ span{ left: 600px;opacity: 1;}
+
+
+/*wrap*/
+body{
+	background: white;
+}
+
+.wrap{
+	width: 1200px;
+	margin: 0 auto;
+	padding: 50px;
+	box-sizing: border-box;
+	background: #370059;
+	margin-top: 60px;
+}
+.wrap h1{
+	padding-bottom: 12px;
+	border-bottom: 3px solid #000;
+	font-size: 32px;
+	letter-spacing: -2px;
+	margin-left: 10px;
+	margin-top: 10px;
+	
+}
+.wrap span{
+	font-size: 30px;
+	color: #C240F5;
+}
+.main{
+	border: solid 3px;;
+	background-color: white;
+}
+.check{
+	margin-left:10px;
+}
+.check> a{
+	border-left: solid 1px;
+	padding-left: 3px; 
+}
+
+.check> a:first-child{
+	border-left: none;
+}
+.check> a:hover{	
+	color: blue;
+	transition: background-color 0.3s ease-in,
+              color 0.3s ease-in;
+}
+	
+.check> a:visited{
+	color: black;
+}
+.top{
+	width: 100%;
+	display: flex;
+}
+.check{
+	width: 50%
+}
+.page_top{
+	width: 50%
+}
+.page_top {
+	margin-right: 15px;
+	text-align: right;
+}
+.page_top > a {
+	padding: 5px;
+}
+
+.page_bot{
+	margin: 10px 10px 10px 10px;
+	vertical-align: middle;
+	text-align: center;
+}
+.page_bot > a {
+	padding: 5px;
+}
+.page_bot input[type="text"]{
+	display: in inline-block;
+	padding: 3px;
+	border: solid 1px;
+	border-radius: 7px;
+	cursor: pointer;
+	margin-top: 10px;
+}
+/*card_box*/
+.card_box{
+	margin: 20px 0px 20px 10px;
+}
+.card_cnt > div{
+	width: 24%;
+	display:inline-block;
+	height: 320px;
+	background-color: white;
+	border: solid 1px;
+}
+.card_cnt > div {
+	margin: 1px;
+}
+
+.shadow:hover{
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
+}
+
+.card_cnt .item {
+	display: inline-block;
+	width: 20%;
+	margin-top: 40px;
+	margin-left: 5%;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+}
+.card_cnt_top{
+	display:flex;
+}
+
+#today{
+	width: 50%;
+}
+#jjim{
+	text-align: right;
+	width: 50%;
+}
+
+.card_cnt .image{
+	width: 100%;
+	height: 160px;
+	background-color: #ddd;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+	margin-top: 5px;	
+	background-image: url(../img/logo3.png);
+	
+	
+
+}
+.card_cnt .image img{
+	width: 100%;
+	height:100%
+	
+}
+	
+.card_cnt .cont{
+	padding: 10px;
+}
+.card_cnt strong{
+	display: block;
+	margin: 0 0 10px 0;
+	font-size: 16px;
+	letter-spacing: -1px;
+}
+.card_cnt .item p{
+	font-size: 13px;
+	letter-spacing: -1px;
+}
+/*
+.card_cnt a{
+	display: inline-block;
+	margin-top: 10px;
+	padding: 5px 10px;
+	background: #eee;
+	font-size: 13px;
+	letter-spacing: -1px;
+	transition: background 1s ease;
+}
+
+.card_cnt a:hover {
+	background: #C240F5;
+	color: #fff;
+}
+*/
+
+footer {
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #000;
+    text-align: center;
+    font-size: 20px;
+}
+footer > a{
+	font-size: 15px;
+}

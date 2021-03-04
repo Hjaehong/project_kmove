@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#topMenu{
+	width:100%;
+}
+#bodyView{
+	justify-content:
+	space-between;
+	display:flex;
+}
+#centerView{
+	justify-content:
+	flex-start;
+	display:flex;
+	flex-basis:100%;
+}
