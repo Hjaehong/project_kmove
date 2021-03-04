@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>form</title>
 <link rel="stylesheet" href="${root}/css/styleact.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="${root}/javascipt/member/member.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -56,13 +55,13 @@
 			<input type="image" src="${root}/img/click1.png" alt="검색">
 		</div>
 		<div id="contents">
-			<a href="${root}/main.jsp" ><span><img alt="로고	" src="${root}/img/logo3.png"></span></a>
-			<a href="${root}/groupPurchase/list.do"><span>공동구매</span></a>
+			<a href="../main.jsp" ><span><img alt="로고	" src="${root}/img/logo3.png"></span></a>
+			<a href="${root}/groupPurchase/list.do" ><span>공동구매</span></a>
 			<a href="#" ><span>해외직구</span></a>
 			<a href="#" ><span>주문제작</span></a>
 			<a href="#" ><span>자유게시판</span></a>
 			<a href="${root}/member/login.do" ><span>로그인</span></a>
-			<a href="${root}/member/register.do"><span>회원가입</span></a>
+			<a href="${root}/member/register.do" class=on><span>회원가입</span></a>
 			<span></span>
 		</div> 
 	</nav>	
@@ -71,26 +70,27 @@
 		<form class="form_style" name="memberForm" action="${root}/member/registerOk.do" 
 		          method="post" onsubmit="return registerForm(this)">
 			<dl>
-				<dt>아이디</dt>
+				<dt>*아이디</dt>
 				<dd><input type="text" name="id" onkeydown="inputIdCheck()" placeholder="아이디 입력">
 					<input type="button" value="아이디중복" onclick="idCheck('${root}', memberForm)"/>
 					<input type="hidden" name="idCheckCheck" value="idUnCheck" />
 				</dd>
 			</dl>
 			<dl>
-				<dt>비밀번호</dt>
-				<dd><input type="password" name="password" placeholder="비밀번호 입력"></dd>
+				<dt>*비밀번호</dt>
+				<dd><input type="password" name="password" placeholder="비밀번호 입력" /></dd>
+			</dl>
+				
+			<dl>
+				<dt>*비밀번호 확인</dt>
+				<dd><input type="password" name="passwordCheck" placeholder="비밀번호 재입력" /></dd>
 			</dl>
 			<dl>
-				<dt>비밀번호 확인</dt>
-				<dd><input type="password" name="passwordCheck" placeholder="비밀번호 재입력"></dd>
-			</dl>
-			<dl>
-				<dt>이름</dt>
+				<dt>*이름</dt>
 				<dd><input type="text" name="name" placeholder="이름 입력"></dd>
 			</dl>
 			<dl>
-				<dt>연락처</dt>
+				<dt>*연락처</dt>
 				<dd><select name="phone1">
 					<option value="010">010</option>
 					<option value="011">011</option>
@@ -101,9 +101,10 @@
 				</dd>
 			</dl>
 			<dl>
-				<dt>닉네임</dt>
-				<dd><input type="text" name="nickname" placeholder="닉네임"></dd>
+				<dt>*닉네임</dt>
+				<dd><input type="text" name="nickname" placeholder="닉네임" maxlength="9" /></dd>
 			</dl>
+				
 			<dl>
 				<dt>주소</dt>
 				<dd><input type="text" id="sample4_postcode" name="zipcode" placeholder="우편번호">

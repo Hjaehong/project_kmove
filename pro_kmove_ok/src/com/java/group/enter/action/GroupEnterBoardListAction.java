@@ -50,7 +50,7 @@ public class GroupEnterBoardListAction implements Command {
 
 		request.setAttribute("trig", trig);
 		request.setAttribute("boardSize", boardSize);		
-		request.setAttribute("currentPage", currentPage);	
+		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("groupboardList", groupboardList);		
 		request.setAttribute("count", count);
 		

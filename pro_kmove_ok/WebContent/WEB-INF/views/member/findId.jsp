@@ -15,11 +15,11 @@
 	<nav class="menu">
 		<div class="search">
 			<input type="text" placeholder="Search">
-			<input type="image" src="${root}/img/click1.png" alt="검색">
+			<input type="image" src="img/click1.png" alt="검색">
 		</div>
 		<div id="contents">
-			<a href="${root}/main.jsp" ><span><img alt="로고	" src="${root}/img/logo3.png"></span></a>
-			<a href="${root}/groupPurchase/list.do"><span>공동구매</span></a>
+			<a href="../main.jsp" ><span><img alt="로고	" src="img/logo3.png"></span></a>
+			<a href="#" ><span>공동구매</span></a>
 			<a href="#" ><span>해외직구</span></a>
 			<a href="#" ><span>주문제작</span></a>
 			<a href="#" ><span>자유게시판</span></a>
@@ -42,8 +42,8 @@
 						<option value="011">011</option>
 						<option value="070">070</option>
 					</select>
-					<input type="text" name="phone2" maxlength="4"/>
-					<input type="text" name="phone3" maxlength="4"/>
+					<input type="text" name="phone2" maxlength="4" size="5"/>
+					<input type="text" name="phone3" maxlength="4" size="5"/>
 				</dd>
 			</dl>
 			<input type="submit" value="확인"> 
