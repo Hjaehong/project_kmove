@@ -21,8 +21,8 @@ public class GroupEnterBoardWriteOkAction implements Command {
 		request.setCharacterEncoding("utf-8");
 
 		// 업로드 된 파일이 저장되는 절대경로
-		String path = request.getServletContext().getRealPath("/upload");
-
+		String path = request.getServletContext().getRealPath("/uploadImg");
+		logger.info(logMsg + path);
 		// 경로에 폴더가 없으면 폴더를 생성
 		File uploadFilePath = new File(path);
 		if (!uploadFilePath.exists()) {
