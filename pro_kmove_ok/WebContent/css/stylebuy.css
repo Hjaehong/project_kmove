@@ -211,14 +211,6 @@ body{
 	background-size: cover;
 	margin-top: 5px;	
 	background-image: url(../img/logo3.png);
-	
-	
-
-}
-.card_cnt .image img{
-	width: 100%;
-	height:100%
-	
 }
 	
 .card_cnt .cont{

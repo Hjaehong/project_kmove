@@ -115,7 +115,7 @@ function idCheck(root, memberForm){
 		alert("아이디는 5글자 이상부터 가능합니다.");
 		return false;
 	}
-	if(document.memberForm.value==""){
+	if(memberForm.id.value==""){
 		alert("아이디를 반드시 입력하세요.");
 		memberForm.id.focus();
 		return false;
@@ -123,8 +123,21 @@ function idCheck(root, memberForm){
 			
 	var url=root + "/member/idCheck.do?id="+memberForm.id.value;
 	window.open(url, "", "width=500, height=250");
+	//alert(url);
 }
 
-	function inputIdCheck(){
-		document.memberForm.idCheckCheck.value="idUnCheck";
+function idCheck(root, memberForm){
+	if(memberForm.id.value==""){
+		alert("아이디를 반드시 입력하세요.");
+		memberForm.id.focus();
+		return false;
 	}
+	
+	var url=root + "/member/idCheck.do?id="+memberForm.id.value;
+	// alert(url);
+	window.open(url, "", "width=300, height=150")
+}
+
+function inputIdCheck(){
+	document.memberForm.idCheckCheck.value="idUnCheck";
+}

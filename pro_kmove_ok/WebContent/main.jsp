@@ -28,14 +28,8 @@
 			<a href="#" ><span>해외직구</span></a>
 			<a href="#" ><span>주문제작</span></a>
 			<a href="${root}/member/login.do" onclick="loginGo()"><span>자유게시판</span></a>
-			<c:if test="${id != null}">
-			<a href="${root}/member/myPage.do">마이페이지</a>
-			<a href="${root}/member/logout.do">로그아웃</a>
-			</c:if>
-			<c:if test="${id == null}">
 			<a href="${root}/member/login.do" ><span>로그인</span></a>
 			<a href="${root}/member/register.do"><span>회원가입</span></a>
-			</c:if>
 			<span></span>
 		</div> 
 	</nav>	

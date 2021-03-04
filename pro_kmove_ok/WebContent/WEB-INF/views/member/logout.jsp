@@ -5,19 +5,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>09</title>
-<c:remove var="id" scope="session"/>
-<c:remove var="memberDto" scope="session"/>
-<c:set var="root" value="${pageContext.request.contextPath}"/>
- <script type="text/javascript">
- window.history.forward();
-</script>
+<title>로그아웃</title>
 </head>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<body>
+	<c:set var="root" value="${pageContext.request.contextPath}"/>
+	
+	<c:remove var="id" scope="session"/>
+	<c:remove var="memberDto" scope="session"/>
+	
 	<script type="text/javascript">
 		alert("로그아웃 되었습니다.");
-		location.href="../main.jsp";
+		location.href="./../main.jsp";
 	</script>
-
+	
 </body>
 </html>

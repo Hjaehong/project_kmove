@@ -65,7 +65,7 @@
 
 		<tr>
 			<td align="center" height="200" width="125">글내용</td>
-			<td valign="top" height="200" colspan="3"><img src="../uploadImg/${groupEnterboardDto.fileName}"/><br/>${groupEnterboardDto.contents}</td>
+			<td valign="top" height="200" colspan="3"><img src="../upload/${groupEnterboardDto.fileName}"/><br/>${groupEnterboardDto.contents}</td>
 		</tr>
 
 		<tr>

@@ -7,40 +7,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${root}/css/styleact.css">
- <script type="text/javascript">
- window.history.forward();
- function noBack(){window.history.forward();}
-</script>
 <title>내 정보보기</title>
 <script type="text/javascript">
  function loginchk() {
 	  var regx = /^[a-zA-Z0-9]*$/;
 	  var id = document.form.id.value;
-	  var password = document.form.password.value;
+	  var pass = document.form.pass.value;
 	  
-	  if (password.length < 7 || pass == null) {
-	   	alert("비밀번호는 7글자이상입니다.");
-	   	document.form.password.focus();
+	  if (pass.length < 6 || pass == null) {
+	   	alert("비밀번호는 6글자이상입니다^^");
+	   	document.form.pass.focus();
 	   	return;
 	  }
 	  
-	  if (!regx.test(password)) {
+	  if (!regx.test(pass)) {
 	   	alert("비밀번호는 영어, 숫자만 입력가능합니다.");
-	   	document.form.password.focus();
+	   	document.form.pass.focus();
 	   	return false;
 	  }
 	  document.form.submit();
 	 }
 </script>
 </head>
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+<body nload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 	<nav class="menu">
 		<div class="search">
 			<input type="text" placeholder="Search">
-			<input type="image" src="img/click1.png" alt="검색">
+			<input type="image" src="${root}/img/click1.png" alt="검색">
 		</div>
 		<div id="contents">
-			<a href="../main.jsp" ><span><img alt="로고	" src="img/logo3.png"></span></a>
+			<a href="../main.jsp" ><span><img alt="로고" src="${root}/img/logo3.png"></span></a>
 			<a href="${root}/groupPurchase/list.do" ><span>공동구매</span></a>
 			<a href="#" ><span>해외직구</span></a>
 			<a href="#" ><span>주문제작</span></a>
@@ -57,10 +53,10 @@
 		</div> 
 	</nav>	
 	
-	<form action="${root}/member/myPageOk.do" method="post">
+<form action="${root}/member/myPageOk.do" method="post">
 	   <div class="wrap">
-	   <dl>
-	    <dt>아이디 : </dt>
+	   	<dl>
+	    	<dt>아이디 : </dt>
 	    	<dd><input type="text" size="10" maxlength="15" name="id" class="inputid" value="${id}" disabled="disabled"></dd>&nbsp;
 	    </dl>
 	    <br><br>
@@ -68,8 +64,8 @@
 	    <dt>비밀번호 : </dt>
 	    	<dd><input type="password" size="10" maxlength="15" name="password" value="${memberDto.password}"></dd><br><br>
 		</dl>
-	     	<input type="submit" value="확인" onclick="loginchk(this)">
+	     	<input type="submit" value="확인" onclick="loginchk()">
 		</div>
-	</form>
+</form>
 </body>
 </html>
