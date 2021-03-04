@@ -9,7 +9,6 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${root}/css/main.css"/>
-<link rel="stylesheet" type="text/css" href="${root}/css/groupPurchase/style.css"/>
 <link rel="stylesheet" href="${root}/css/free.css">
 </head>
 <body>
@@ -27,15 +26,15 @@
 					<div class="date">작성일</div>
 					<div class="count">조회</div>
 				</div>
-				<div>
 				<c:forEach var="freeboardDto" items="${freeboardList}">
+					<div>
 						<div class="num">${freeboardDto.board_number}</div>
 						<div class="title"><a href="${root}/freeboard/read.do?board_number=${freeboardDto.board_number}&pageNumber=${currentPage}">${freeboardDto.subject}</a></div>
 						<div class="writer">${freeboardDto.writer}</div>
 						<div class="date"><fmt:formatDate value="${freeboardDto.write_date}" pattern="yyyy-MM-dd"/></div>
 						<div class="count">${freeboardDto.read_count}</div>
+					</div>
 				</c:forEach>
-				</div>
 			</div>
 		
 			<div class="board_page">

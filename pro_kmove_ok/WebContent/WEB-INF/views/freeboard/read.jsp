@@ -10,7 +10,6 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${root}/css/free.css">
 <link rel="stylesheet" type="text/css" href="${root}/css/main.css"/>
-<link rel="stylesheet" type="text/css" href="${root}/css/groupPurchase/style.css"/>
 <script type="text/javascript" src="${root}/XHR/xhr.js"></script>
 <script type="text/javascript" src="${root}/enterJS/enter.js"></script>
 <script type="text/javascript">
