@@ -34,6 +34,7 @@
 		<div class="main">
 			<div>
 				<h1><span>공동구매</span></h1>
+				
 			</div>
 				<div class="top">
 					<div class="check">
@@ -42,6 +43,7 @@
 						<a href="#">최신순</a>
 						<a href="#">인기순</a>
 					</div>
+					<div><a href="${root}/groupPurchase/write.do">글쓰기</a></div>
 					<div class="page_top">
 						<fmt:parseNumber var="pageCount" value="${count/boardSize+(count%boardSize==0 ? 0:1)}" integerOnly="true"/>
 						<c:set var="pageBlock" value="${8}"/>
@@ -78,8 +80,9 @@
 									<input type="button" value="찜하기" name="jjim"
 										onclick="like('${root}','${groupboardDto.board_number}','${id}')">♥♡
 								</div>
+								
 							</div>
-							<div class="image"><img src="../upload/${groupEnterboardDto.fileName}"/></div>
+							<div class="image"><img src="../uploadImg/${groupboardDto.fileName}"/></div>
 							<div class="cont"
 								onclick="location.href='${root}/groupPurchase/read.do?board_number=${groupboardDto.board_number}&pageNumber=${currentPage}'">
 								<strong>${groupboardDto.subject}</strong>
