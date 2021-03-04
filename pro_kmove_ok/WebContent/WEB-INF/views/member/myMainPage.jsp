@@ -25,8 +25,8 @@
 			<a href="#" ><span>해외직구</span></a>
 			<a href="#" ><span>주문제작</span></a>
 			<a href="#" ><span>자유게시판</span></a>
-			<a href="${root}/main.jsp" ><span>로그아웃</span></a>
 			<a href="${root}/member/myPage.do"><span>마이페이지</span></a>
+			<a href="${root}/main.jsp" ><span>로그아웃</span></a>
 			<span></span>
 		</div> 
 	</nav>	
@@ -45,10 +45,6 @@
 									<span>${memberDto.nickname}</span>
 								</li>
 								<li>
-									<a>이름</a>
-									<span>홍길동</span>
-								</li>
-								<li>
 									<a>전화번호</a>
 									<span>${memberDto.phone1}-${memberDto.phone2}-${memberDto.phone3}</span>
 								</li>
@@ -61,7 +57,6 @@
 								<input type="submit"  onclick="location.href='${root}/member/update.do'" value="정보수정">
 								<input type="submit" onclick="location.href='${root}/member/delete.do'" value="아이디삭제">
 							</div>
-
 						</div>
 					</div>
 					<div class="idx_board">

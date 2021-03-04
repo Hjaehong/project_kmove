@@ -3,10 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <c:set var="root" value="${pageContext.request.contextPath}" />
-<c:remove var="memberDto" scope="session"/>
-
 <html>
 <head>
+<link rel="stylesheet" href="${root}/css/styleact2.css">
+ <script type="text/javascript">
+ window.history.forward();
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원수정</title>
 <script src="${root}/javascript/member/member.js" type="text/javascript"></script>
@@ -49,84 +51,91 @@
     }
 </script>
 </head>
-<body>
-	<div id="topMenu">
-		<jsp:include page="/template/topMenu.jsp"/>
-	</div>
-	<div align="center">
-		<font size="2"><b>회원 수정</b></font>
-	</div>
-	<div align="center">
-		<form class="form_style" action="${root}/member/updateOk.do" method="post" onsubmit="return registerForm(this)">
-		                                          <%-- 기본값 : 참(true) --%>
-			<div class="line">
-				<label class="title">아이디</label>
-				<span class="content">
-					<input type="text" name="id" value="${memberDto.id}" disabled="disabled"/>
-				</span>
-			</div>
-			
-			<div class="line">
-				<label  class="title">비밀번호</label>
-				<span class="content">
-					<input type="password" name="password" value="${memberDto.password}"/>
-				</span>
-			</div>
-			
-			<div class="line">
-				<label class="title">비밀번호확인</label>
-				<span class="content">
-					<input type="password" name="passwordCheck" value="${memberDto.password}"/>
-				</span>
-			</div>
-	
-			<div class="line">
-				<label class="title">이름</label>
-				<span class="content">
-					<input type="text" name="name" disabled="disabled" value="${memberDto.name}"/>
-				</span>
-			</div>
-
-			<div class="line">
-				<label class="title">닉네임</label>
-				<span class="content">
-					<input type="text" name="nickname" value="${memberDto.nickname}"/>
-				</span>
-			</div>
-			
-			<div class="line">
-				<input type="text" id="sample4_postcode" name="zipcode" placeholder="우편번호" value="${memberDto.zipcode}">
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+	<nav class="menu">
+		<div class="search">
+			<input type="text" placeholder="Search">
+			<input type="image" src="img/click1.png" alt="검색">
+		</div>
+		<div id="contents">
+			<a href="../main.jsp" ><span><img alt="로고	" src="img/logo3.png"></span></a>
+			<a href="${root}/groupPurchase/list.do" ><span>공동구매</span></a>
+			<a href="#" ><span>해외직구</span></a>
+			<a href="#" ><span>주문제작</span></a>
+			<a href="#" ><span>자유게시판</span></a>
+			<c:if test="${id != null}">
+			<a href="${root}/member/myPage.do">마이페이지</a>
+			<a href="${root}/member/logout.do">로그아웃</a>
+			</c:if>
+			<c:if test="${id == null}">
+			<a href="${root}/member/login.do" ><span>로그인</span></a>
+			<a href="${root}/member/register.do"><span>회원가입</span></a>
+			</c:if>
+			<span></span>
+		</div> 
+	</nav>	
+	<div class="wrap">
+		<h1>#.09<br><span id="act_logo">회원수정</span></h1>
+		<form class="form_style" name="memberForm" action="${root}/member/updateOk.do" 
+		          method="post" onsubmit="return registerForm(this)">
+			<dl>
+				<dt>아이디</dt>
+				<dd><input type="text" name="id" onkeydown="inputIdCheck()" value="${memberDto.id}" disabled="disabled">
+				</dd>
+			</dl>
+			<dl>
+				<dt>비밀번호</dt>
+				<dd><input type="password" name="password" value="${memberDto.password}"></dd>
+			</dl>
+			<dl>
+				<dt>비밀번호 확인</dt>
+				<dd><input type="password" name="passwordCheck" value="${memberDto.password}"></dd>
+			</dl>
+			<dl>
+				<dt>이름</dt>
+				<dd><input type="text" name="name" disabled="disabled" value="${memberDto.name}"></dd>
+			</dl>
+			<dl>
+				<dt>연락처</dt>
+				<dd><select name="phone1" value="${memberDto.phone1}">
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="070">070</option>
+				 </select>
+				-<input type="text" name="phone2" size=4 value="${memberDto.phone2}" maxlength="4"/>
+				-<input type="text" name="phone3" size=4 value="${memberDto.phone3}" maxlength="4"/>
+				</dd>
+			</dl>
+			<dl>
+				<dt>닉네임</dt>
+				<dd><input type="text" name="nickname" value="${memberDto.nickname}"></dd>
+			</dl>
+			<dl>
+				<dt>주소</dt>
+				<dd><input type="text" id="sample4_postcode" name="zipcode" value="${memberDto.zipcode}">
 				<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-				<input type="text" id="sample4_roadAddress" name="address1" placeholder="도로명주소" value="${memberDto.address1}"><br>
-				<input type="text" id="sample4_detailAddress" name="address2" placeholder="상세주소" value="${memberDto.address2}">
-				<span id="guide" style="color:#999;display:none"></span>
-			</div>
-			
-			<div class="line">
-				<label class="title">핸드폰</label>
-				<span class="content">
-					<select name="phone1" value="${memberDto.phone1}">
-						<option value="010">010</option>
-						<option value="011">011</option>
-						<option value="070">070</option>
-					 </select>
-					-<input type="text" name="phone2" size=4 value="${memberDto.phone2}" maxlength="4"/>
-					-<input type="text" name="phone3" size=4 value="${memberDto.phone3}" maxlength="4"/>
-				</span>
-			</div>
-			
-			<div class="line" style="width:498px; border-width:2px; text-align:center;">
+				<input type="text" id="sample4_roadAddress" name="address1" value="${memberDto.address1}"><br>
+				<input type="text" id="sample4_detailAddress" name="address2" value="${memberDto.address2}">
+				</dd>
+			</dl>
+			<dl>
+			<dt>
 			<input type="hidden" name="member_number" value="${memberDto.member_number}"/>
-				<input type="submit" value="수정" />
-				<input type="button" value="취소" onclick="location.href='${root}/member/myMainPage.do'"/>
-			</div>
+			<dd><input type="submit" value="수정" />
+			<input type="button" value="취소" onclick="location.href='${root}/member/myMainPage.do'"/></dd>
+			</dt>
+			</dl>
 		</form>
 	</div>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('nav a').on('click',function(){
+				$(this).addClass('on');
+				$(this).siblings().removeClass('on');
+			});
+		});
+	</script>
+	
 </body>
 </html>
-
-
-
-
-
-

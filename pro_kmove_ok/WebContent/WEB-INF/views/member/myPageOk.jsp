@@ -15,7 +15,6 @@
 		<c:set var="memberDto" value="${memberDto}" scope="session"/>
 		
 		<script type="text/javascript">
-			//alert("회원인증이 완료되었습니다.");
 			location.href="${root}/member/myMainPage.do";
 		</script>
 	</c:if>

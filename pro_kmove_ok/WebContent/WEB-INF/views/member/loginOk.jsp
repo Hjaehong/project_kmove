@@ -9,14 +9,14 @@
 </head>
 <body>
 	<c:set var="root" value="${pageContext.request.contextPath}" />
+	<c:set var="id" value="${id}" scope="session"/>
+	<c:set var="grade" value="${grade}" scope="session"/>
 	
 	<c:if test="${grade !=null}">
-		<c:set var="id" value="${id}" scope="session"/>
-		<c:set var="grade" value="${grade}" scope="session"/>
 		
 		<script type="text/javascript">
 			//alert("로그인 성공!!! ${root}/member/main.do");
-			location.href = "${root}/member/loginMain.do";
+			location.href = "../main.jsp";
 		</script>
 	</c:if>
 	
